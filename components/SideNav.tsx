@@ -1,5 +1,5 @@
 import Logo from "./Logo"
-//1:12:39
+import NavLinks from "./NavLinks"
 
 function Sidenav() {
   return (
@@ -9,7 +9,7 @@ function Sidenav() {
         md:border-none flex flex-row md:justify-between space-x-2 md:flex-col md:space-x-0
         md:space-y-2 p-2">
             <Logo />
-            {/* <NavLinks /> */}
+            <NavLinks />
             {/* User && profile link */}
 
             <div>
