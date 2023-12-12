@@ -1,4 +1,5 @@
 import Logo from "./Logo"
+import MoreDropDown from "./MoreDropDown"
 import NavLinks from "./NavLinks"
 
 function Sidenav() {
@@ -12,8 +13,8 @@ function Sidenav() {
             <NavLinks />
             {/* User && profile link */}
 
-            <div>
-                {/* More dropdown */}
+            <div className="hidden md:flex relative md:mt-auto flex-1 items-end w-full">
+                <MoreDropDown />
             </div>
         </div>
     </div>
