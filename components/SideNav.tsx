@@ -1,9 +1,13 @@
+import { auth } from "@/auth";
 import Logo from "./Logo"
 import MoreDropDown from "./MoreDropDown"
 import NavLinks from "./NavLinks"
-//3:21:56
+import ProfileLink from "./ProfileLink";
 
-function Sidenav() {
+async function Sidenav() {
+  const session = await auth();
+  const user = session?.user;
+
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
         <div className="border-t -ml-3 md:ml-0 bg-white dark:bg-neutral-950 h-16
@@ -12,7 +16,9 @@ function Sidenav() {
         md:space-y-2 p-2">
             <Logo />
             <NavLinks />
-            {/* User && profile link */}
+            { user && <ProfileLink
+              user={user}
+            /> }
 
             <div className="hidden md:flex relative md:mt-auto flex-1 items-end w-full">
                 <MoreDropDown />
