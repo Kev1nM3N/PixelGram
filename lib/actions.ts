@@ -19,7 +19,7 @@ import {
 
 //6:03:08
 
-export async function getPosts (values: z.infer<typeof CreatePost>){
+export async function createPost (values: z.infer<typeof CreatePost>){
     const userId = await getUserId();
 
     const validatedFields = CreatePost.safeParse(values);
@@ -32,4 +32,25 @@ export async function getPosts (values: z.infer<typeof CreatePost>){
     }
 
     const {fileUrl, caption} = validatedFields.data
+
+    try {
+        await prisma.post.create({
+            data: {
+                caption,
+                fileUrl,
+                user: {
+                    connect: {
+                        id: userId
+                    }
+                }
+            }
+        })
+    } catch (error) {
+        return {
+            message: "Database Error: Failed to create post."
+        }
+    }
+
+    revalidatePath('/dashboard')
+    redirect('/dashboard')
 }
