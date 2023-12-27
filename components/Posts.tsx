@@ -1,15 +1,17 @@
-import { fetchPosts } from '@/lib/data';
-import React from 'react'
-//6:33:05
+import { fetchPosts } from "@/lib/data";
+import React from "react";
+import Post from "./Post";
 
 async function Posts() {
   const posts = await fetchPosts();
 
   return (
     <>
-      hwloo world
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
+      ))}
     </>
-  )
+  );
 }
 
-export default Posts
+export default Posts;
