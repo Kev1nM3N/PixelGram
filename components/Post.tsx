@@ -3,10 +3,7 @@ import UserAvatar from "@/components/UserAvatar";
 import { PostWithExtras } from "@/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";
-// import Comments from "./Comments";
-// import PostActions from "./PostActions";
-// import Timestamp from "./Timestamp";
-// import PostOptions from "./PostOptions";
+import Comments from "./Comments";
 import { Card } from "./ui/card";
 import Timestamp from "./Timestamp";
 import PostOptions from "./PostOptions";
@@ -73,7 +70,7 @@ async function Post({ post }: {post: PostWithExtras}) {
         </div>
       )}
 
-      {/* <Comments postId={post.id} comments={post.comments} user={session.user} /> */}
+      <Comments postId={post.id} comments={post.comments} user={session.user} />
     </div>
   )
 }

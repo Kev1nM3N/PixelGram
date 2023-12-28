@@ -216,3 +216,73 @@ export async function bookmarkPost(value: FormDataEntryValue | null) {
     };
   }
 }
+
+export async function createComment(values: z.infer<typeof CreateComment>) {
+  const userId = await getUserId();
+
+  const validatedFields = CreateComment.safeParse(values);
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing Fields. Failed to Create Comment.",
+    };
+  }
+
+  const { postId, body } = validatedFields.data;
+
+  const post = await prisma.post.findUnique({
+    where: {
+      id: postId,
+    },
+  });
+
+  if (!post) {
+    throw new Error("Post not found");
+  }
+
+  try {
+    await prisma.comment.create({
+      data: {
+        body,
+        postId,
+        userId,
+      },
+    });
+    revalidatePath("/dashboard");
+    return { message: "Created Comment." };
+  } catch (error) {
+    return { message: "Database Error: Failed to Create Comment." };
+  }
+}
+
+export async function deleteComment(formData: FormData) {
+  const userId = await getUserId();
+
+  const { id } = DeleteComment.parse({
+    id: formData.get("id"),
+  });
+
+  const comment = await prisma.comment.findUnique({
+    where: {
+      id,
+      userId,
+    },
+  });
+
+  if (!comment) {
+    throw new Error("Comment not found");
+  }
+
+  try {
+    await prisma.comment.delete({
+      where: {
+        id,
+      },
+    });
+    revalidatePath("/dashboard");
+    return { message: "Deleted Comment." };
+  } catch (error) {
+    return { message: "Database Error: Failed to Delete Comment." };
+  }
+}
