@@ -14,7 +14,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { useRef } from "react";
 import MiniPost from "./MiniPost";
 import Comment from "./Comment";
-//9:33:08
 
 function PostView({ id, post }: { id: string; post: PostWithExtras }) {
   const pathname = usePathname();

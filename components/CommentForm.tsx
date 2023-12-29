@@ -1,5 +1,4 @@
 "use client";
-
 import { createComment } from "@/lib/actions";
 import { CreateComment } from "@/lib/schemas";
 import { cn } from "@/lib/utils";
@@ -63,7 +62,8 @@ function CommentForm({
                     disabled={isSubmitting}
                     type="text"
                     placeholder="Add a comment..."
-                    className="bg-transparent text-sm border-none focus:outline-none flex-1 dark:text-neutral-400 placeholder-neutral-400 font-medium disabled:opacity-30"
+                    className="bg-transparent text-sm border-none focus:outline-none 
+                    flex-1 dark:text-neutral-400 placeholder-neutral-400 font-medium disabled:opacity-30"
                     {...field}
                   />
                 </FormControl>
