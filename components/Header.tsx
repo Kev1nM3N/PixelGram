@@ -2,6 +2,7 @@ import { Heart, Search } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
+import { calSans } from '@/app/fonts'
 
 function Header() {
   return (
@@ -12,8 +13,8 @@ function Header() {
     >
 
         <Link href={"/dashboard"}>
-            <p className={`font-semibold text-xl`}>
-            Pixelgram
+            <p className={`font-semibold text-xl ${calSans.className}`}>
+            pixelGram
             </p>
         </Link>
 

@@ -14,7 +14,7 @@ const nextConfig = {
               
               {
                 protocol: "https",
-                hostname: "instagram.fpnq13-1.fna.fbcdn.net",
+                hostname: "global.discourse-cdn.com",
               },
         ],
     },

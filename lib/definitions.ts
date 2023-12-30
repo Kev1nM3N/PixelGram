@@ -1,5 +1,6 @@
 import type {
     Comment,
+    Follows,
     Like,
     Post,
     SavedPost,
@@ -16,17 +17,17 @@ import type {
     user: User;
   };
   
-//   export type UserWithFollows = User & {
-//     following: Follows[];
-//     followedBy: Follows[];
-//   };
+  export type UserWithFollows = User & {
+    following: Follows[];
+    followedBy: Follows[];
+  };
   
-//   export type FollowerWithExtras = Follows & { follower: UserWithFollows };
-//   export type FollowingWithExtras = Follows & { following: UserWithFollows };
+  export type FollowerWithExtras = Follows & { follower: UserWithFollows };
+  export type FollowingWithExtras = Follows & { following: UserWithFollows };
   
-//   export type UserWithExtras = User & {
-//     posts: Post[];
-//     saved: SavedPost[];
-//     followedBy: FollowerWithExtras[];
-//     following: FollowingWithExtras[];
-//   };
+  export type UserWithExtras = User & {
+    posts: Post[];
+    saved: SavedPost[];
+    followedBy: FollowerWithExtras[];
+    following: FollowingWithExtras[];
+  };
